@@ -1,5 +1,6 @@
 var assert = require('assert'),
-    Service = require('../Service');
+    Service = require('../Service'),
+    ServiceManager = require('../ServiceManager');
 
 describe('srvoa::service', function() {
     it('provides a configure mothod.', function() {
@@ -18,5 +19,21 @@ describe('srvoa::service', function() {
         var srv = new Service;
 
         assert(typeof srv.launch === 'function');
+    });
+
+    it('allows passing a service manager instance on construction time.', function() {
+        var serviceManager = new ServiceManager,
+            srv = new Service(serviceManager);
+
+        assert(srv.getServiceManager() === serviceManager);
+    });
+
+    it('allows setting the service manager instance delayed.', function() {
+        var serviceManager = new ServiceManager,
+            srv = new Service();
+
+        srv.setServiceManager(serviceManager);
+
+        assert(srv.getServiceManager() === serviceManager);
     });
 });
