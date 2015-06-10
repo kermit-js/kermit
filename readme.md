@@ -1,0 +1,3 @@
+## Install ##
+
+`$ npm install srvoa`

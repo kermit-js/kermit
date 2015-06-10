@@ -1,0 +1,27 @@
+{
+    "name": "srvoa",
+    "version": "0.1.0",
+    "description": "Infrastructure for service oriented architecture.",
+    "author": {
+        "name": "Alrik Zachert",
+        "email": "az@kreatiefer.de"
+    },
+    "scripts": {
+        "test": "mocha --recursive"
+    },
+    "dependencies": {
+        "decl": "~0.1"
+    },
+    "main": "package.js",
+    "keywords": [
+        "service-manager", "infrastructure", "service oriented architecture", "application", "config"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.com/a-z/node-srvoa"
+    },
+    "bugs": {
+        "url": "https://gitlab.com/a-z/node-srvoa/issues"
+    },
+    "license" : "BSD-3-Clause"
+}
