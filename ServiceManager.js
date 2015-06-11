@@ -4,12 +4,14 @@ module.exports = declare({
     /**
      * The map of key => service.
      *
-     * @var Object
+     * @var {Object}
      */
     services: null,
 
     /**
      * Initialize services map.
+     *
+     * @constructor
      */
     constructor: function ServiceManager() {
         this.services = {};
@@ -18,8 +20,8 @@ module.exports = declare({
     /**
      * Lookup and return a service by its key.
      *
-     * @param   string key
-     * @return  Object|undefined
+     * @param   {String} key
+     * @return  {Object}|{undefined}
      */
     get: function(key) {
         return this.services[key];
@@ -28,9 +30,9 @@ module.exports = declare({
     /**
      * Store a service for the given key.
      *
-     * @param   string key
-     * @param   Object service
-     * @return  ServiceManager
+     * @param   {String} key
+     * @param   {Object} service
+     * @return  {ServiceManager}
      */
     set: function(key, service) {
         this.services[key] = service;
@@ -41,8 +43,8 @@ module.exports = declare({
     /**
      * Delete the service for the given key.
      *
-     * @param   string key
-     * @return  ServiceManager
+     * @param   {String} key
+     * @return  {ServiceManager}
      */
     remove: function(key) {
         delete this.services[key];
@@ -51,10 +53,10 @@ module.exports = declare({
     },
 
     /**
-     * Check for the existens of a service by its key.
+     * Check for the existence of a service by its key.
      *
-     * @param   string key
-     * @return  boolean
+     * @param   {String} key
+     * @return  {Boolean}
      */
     has: function(key) {
         return (key in this.services);
