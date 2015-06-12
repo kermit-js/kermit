@@ -1,6 +1,6 @@
 {
     "name": "srvoa",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Infrastructure for service oriented architecture.",
     "author": {
         "name": "Alrik Zachert",
@@ -10,7 +10,7 @@
         "test": "mocha --recursive"
     },
     "dependencies": {
-        "decl": "~0.1"
+        "decl": "~0.2"
     },
     "main": "package.js",
     "keywords": [
