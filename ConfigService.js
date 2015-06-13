@@ -48,19 +48,21 @@ module.exports = declare({
     /**
      * The files to read and merge the config from.
      *
-     * @var Array
+     * @var {Array}
      */
     files: null,
 
     /**
      * The config hash.
      *
-     * @var Object
+     * @var {Object}
      */
     config: null,
 
     /**
      * Initialize the config service.
+     *
+     * @constructor
      */
     constructor: function ConfigService() {
         this.config = {};
@@ -68,8 +70,8 @@ module.exports = declare({
     },
 
     /**
-     * @param   Object config
-     * @return  ConfigService
+     * @param   {Object} config
+     * @return  {ConfigService}
      */
     configure: function(config) {
         if (typeof config.files !== 'undefined') {
@@ -79,6 +81,9 @@ module.exports = declare({
         return this;
     },
 
+    /**
+     * @inheritDoc
+     */
     launch: function() {
         this.readConfig();
 
@@ -88,7 +93,7 @@ module.exports = declare({
     /**
      * Return the list of files to read the config from.
      *
-     * @return Array
+     * @return {Array}
      */
     getFiles: function() {
         return this.files;
@@ -97,8 +102,8 @@ module.exports = declare({
     /**
      * Set the files to read the config from.
      *
-     * @param Array files
-     * @returns ConfigService
+     * @param   {Array} files
+     * @returns {ConfigService}
      */
     setFiles: function(files) {
         this.files = files;
@@ -109,6 +114,8 @@ module.exports = declare({
     /**
      * Read the config files (if existent) and recursively merge the settings.
      * The reader also adds support for simple comments in the config.json files.
+     *
+     * @return  {ConfigService}
      */
     readConfig: function() {
         var files = this.files,
@@ -131,7 +138,7 @@ module.exports = declare({
     },
 
     /**
-     * @return Object
+     * @return {Object}
      */
     getConfig: function() {
         return Object(this.config);
@@ -140,11 +147,10 @@ module.exports = declare({
     /**
      * Sets and merges multiple config sets.
      *
-     * @param   Object config1
-     * @param   Object config2...
-     * @return  ConfigService
+     * @param   {...Object} config
+     * @return  {ConfigService}
      */
-    setConfig: function() {
+    setConfig: function(config) {
         var l = arguments.length;
 
         if (l === 1) {
@@ -161,9 +167,9 @@ module.exports = declare({
     },
 
     /**
-     * @param String key
-     * @param * defaultValue
-     * @returns *
+     * @param   {String} key
+     * @param   {*} defaultValue
+     * @returns {*}
      */
     get: function(key, defaultValue) {
         var parts = key.split('.'),
