@@ -5,3 +5,9 @@
 ## Install ##
 
 `$ npm install srvoa`
+
+
+---
+##### Attribution
+
+Icon: IT Infrastructure by Emily van den Heever from the Noun Project
