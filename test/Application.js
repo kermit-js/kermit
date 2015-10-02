@@ -25,7 +25,7 @@ describe('srvoa::application', function() {
     });
 
     it('allows passing a service manager instance on construction time.', function() {
-        var serviceManager = new ServiceManager;
+        var serviceManager = new ServiceManager,
             app = new Application(serviceManager);
 
         assert(app.getServiceManager() === serviceManager);
