@@ -23,5 +23,5 @@
     "bugs": {
         "url": "https://gitlab.com/a-z/node-srvoa/issues"
     },
-    "license" : "BSD-3-Clause"
+    "license" : "BSD-2-Clause"
 }
