@@ -7,7 +7,7 @@
         "email": "az@kreatiefer.de"
     },
     "scripts": {
-        "test": "mocha --recursive"
+        "test": "mocha --compilers js:babel/register --recursive"
     },
     "dependencies": {
         "decl": "~0.2"
@@ -23,5 +23,8 @@
     "bugs": {
         "url": "https://gitlab.com/a-z/node-srvoa/issues"
     },
-    "license" : "BSD-2-Clause"
+    "license" : "BSD-2-Clause",
+    "devDependencies": {
+    	"babel": "^5.8.23"
+  	}
 }
