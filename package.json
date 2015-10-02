@@ -1,27 +1,34 @@
 {
-    "name": "srvoa",
-    "version": "0.3.0",
-    "description": "Infrastructure for service oriented architecture.",
-    "author": {
-        "name": "Alrik Zachert",
-        "email": "az@kreatiefer.de"
-    },
-    "scripts": {
-        "test": "mocha --compilers js:babel/register --recursive"
-    },
-    "main": "package.js",
-    "keywords": [
-        "service-manager", "infrastructure", "service oriented architecture", "application", "config"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://gitlab.com/a-z/node-srvoa"
-    },
-    "bugs": {
-        "url": "https://gitlab.com/a-z/node-srvoa/issues"
-    },
-    "license" : "BSD-2-Clause",
-    "devDependencies": {
-    	"babel": "^5.8.23"
-  	}
+  "name": "srvoa",
+  "version": "0.3.0",
+  "description": "Infrastructure for service oriented architecture.",
+  "author": {
+    "name": "Alrik Zachert",
+    "email": "az@kreatiefer.de"
+  },
+  "scripts": {
+    "test": "mocha --compilers js:babel/register --recursive"
+  },
+  "main": "package.js",
+  "keywords": [
+    "soa",
+    "service-manager",
+    "infrastructure",
+    "service oriented architecture",
+    "application",
+    "framework",
+    "config",
+    "services"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/a-z/node-srvoa"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/a-z/node-srvoa/issues"
+  },
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
 }
