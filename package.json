@@ -9,9 +9,6 @@
     "scripts": {
         "test": "mocha --compilers js:babel/register --recursive"
     },
-    "dependencies": {
-        "decl": "~0.2"
-    },
     "main": "package.js",
     "keywords": [
         "service-manager", "infrastructure", "service oriented architecture", "application", "config"
