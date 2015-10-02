@@ -5,6 +5,8 @@
  * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
  */
 
+"use strict";
+
 module.export = {
     Application: require('./Application'),
     ConfigService: require('./ConfigService'),

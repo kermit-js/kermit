@@ -5,8 +5,9 @@
  * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
  */
 
+"use strict";
+
 var fs = require('fs'),
-    declare = require('decl/declare'),
     Service = require('./Service');
 
 function getConfigType(value) {
@@ -49,62 +50,63 @@ function mergeConfig(dest, src) {
     return dest;
 }
 
-module.exports = declare({
-    extend: Service,
-
+/**
+ * The srvoa application class.
+ */
+class ConfigService extends Service {
     /**
      * The files to read and merge the config from.
      *
-     * @var {Array}
+     * @property files {Array}
      */
-    files: null,
 
     /**
      * The config hash.
      *
-     * @var {Object}
+     * @property config {Object}
      */
-    config: null,
 
     /**
      * Initialize the config service.
      *
      * @constructor
      */
-    constructor: function ConfigService() {
+    constructor(serviceManager) {
+        super(serviceManager);
+
         this.config = {};
         this.files = [];
-    },
+    }
 
     /**
      * @param   {Object} config
      * @return  {ConfigService}
      */
-    configure: function(config) {
+    configure(config) {
         if (typeof config.files !== 'undefined') {
             this.setFiles(config.files);
         }
 
         return this;
-    },
+    }
 
     /**
      * @inheritDoc
      */
-    launch: function() {
+    launch() {
         this.readConfig();
 
         return this;
-    },
+    }
 
     /**
      * Return the list of files to read the config from.
      *
      * @return {Array}
      */
-    getFiles: function() {
+    getFiles() {
         return this.files;
-    },
+    }
 
     /**
      * Set the files to read the config from.
@@ -112,11 +114,11 @@ module.exports = declare({
      * @param   {Array} files
      * @returns {ConfigService}
      */
-    setFiles: function(files) {
+    setFiles(files) {
         this.files = files;
 
         return this;
-    },
+    }
 
     /**
      * Read the config files (if existent) and recursively merge the settings.
@@ -124,7 +126,7 @@ module.exports = declare({
      *
      * @return  {ConfigService}
      */
-    readConfig: function() {
+    readConfig() {
         var files = this.files,
             i = 0, l = files.length,
             file, data;
@@ -142,14 +144,14 @@ module.exports = declare({
         }
 
         return this;
-    },
+    }
 
     /**
      * @return {Object}
      */
-    getConfig: function() {
+    getConfig() {
         return Object(this.config);
-    },
+    }
 
     /**
      * Sets and merges multiple config sets.
@@ -157,7 +159,7 @@ module.exports = declare({
      * @param   {...Object} config
      * @return  {ConfigService}
      */
-    setConfig: function(config) {
+    setConfig(config) {
         var l = arguments.length;
 
         if (l === 1) {
@@ -171,14 +173,14 @@ module.exports = declare({
         }
 
         return this;
-    },
+    }
 
     /**
      * @param   {String} key
      * @param   {*} defaultValue
      * @returns {*}
      */
-    get: function(key, defaultValue) {
+    get(key, defaultValue) {
         var parts = key.split('.'),
             l = parts.length,
             i = 0,
@@ -201,4 +203,6 @@ module.exports = declare({
             return defaultValue;
         }
     }
-});
+}
+
+module.exports = ConfigService;

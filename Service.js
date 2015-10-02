@@ -5,35 +5,36 @@
  * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
  */
 
-var declare = require('decl/declare');
+"use strict";
 
-module.exports = declare({
+/**
+ * Abstract class that defines the srvoa service interface.
+ */
+class Service {
     /**
-     * The service manager instance.
+     * The local reference to the service manager instance.
      *
-     * @var {ServiceManager}
+     * @property serviceManager {ServiceManager}
      */
-    serviceManager: null,
 
     /**
      * Create a new service instance.
      *
+     * @constructor
      * @param {ServiceManager} [serviceManager] - The service manager instance.
      */
-    constructor: function Service(serviceManager) {
-        if (serviceManager) {
-            this.serviceManager = serviceManager;
-        }
-    },
+    constructor(serviceManager) {
+        this.serviceManager = serviceManager || null;
+    }
 
     /**
      * Returns the service manager instance.
      *
      * @return {ServiceManager}
      */
-    getServiceManager: function() {
+    getServiceManager() {
         return this.serviceManager;
-    },
+    }
 
     /**
      * Sets the service manager instance.
@@ -41,11 +42,11 @@ module.exports = declare({
      * @param   {ServiceManager} serviceManager
      * @return  {Service}
      */
-    setServiceManager: function(serviceManager) {
+    setServiceManager(serviceManager) {
         this.serviceManager = serviceManager;
 
         return this;
-    },
+    }
 
     /**
      * Configures the service.
@@ -53,25 +54,27 @@ module.exports = declare({
      * @param   {Object} [config]
      * @return  {Service}
      */
-    configure: function(config) {
+    configure(config) {
         return this;
-    },
+    }
 
     /**
      * Bootstrap the service logic.
      *
      * @return  {Service}
      */
-    bootstrap: function() {
+    bootstrap() {
         return this;
-    },
+    }
 
     /**
      * Launch the service logic.
      *
      * @return  {Service}
      */
-    launch: function() {
+    launch() {
         return this;
     }
-});
+}
+
+module.exports = Service;

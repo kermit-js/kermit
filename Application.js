@@ -5,72 +5,85 @@
  * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
  */
 
-var declare = require('decl/declare'),
-    Service = require('./Service'),
+"use strict";
+
+var Service = require('./Service'),
     ConfigService = require('./ConfigService'),
-    ServiceManager = require('./ServiceManager'),
-    Application;
+    ServiceManager = require('./ServiceManager');
 
-module.exports = Application = declare({
-    /**
-     * @extends Service
-     */
-    extend: Service,
-
-    statics: {
-        APP_CONFIG_SERVICE_KEY: 'app.config'
-    },
-
+/**
+ * The srvoa application class.
+ */
+class Application extends Service {
     /**
      * The config hash passed to configure.
      *
-     * @var {Object}
+     * @property applicationConfig {Object}
      */
-    applicationConfig: null,
 
     /**
-     * @var {ConfigService}
+     * The reference to the application config service.
+     *
+     * @property configService {ConfigService}
      */
-    configService: null,
+
+    /**
+     * The config service key within the service manager.
+     *
+     * @returns {string}
+     */
+    static get APP_CONFIG_SERVICE_KEY() {
+        return 'app.config';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    constructor(serviceManager) {
+        super(serviceManager);
+
+        this.applicationConfig = null;
+        this.configService = null;
+    }
 
     /**
      * Fetch and return the serviceManager.
      *
      * @return {ServiceManager}
      */
-    getServiceManager: function () {
+    getServiceManager() {
         if (this.serviceManager === null) {
             this.serviceManager = new ServiceManager;
         }
 
         return this.serviceManager;
-    },
+    }
 
     /**
      * @return {ConfigService}
      */
-    getConfigService: function() {
+    getConfigService() {
         return this.configService;
-    },
+    }
 
     /**
      * @param   {ConfigService} configService
      * @return  {Application}
      */
-    setConfigService: function(configService) {
+    setConfigService(configService) {
         this.configService = configService;
 
         return this;
-    },
+    }
 
     /**
      * @inheritDoc
      */
-    configure: function(config) {
+    configure(config) {
         this.applicationConfig = config || {};
 
         return this;
-    },
+    }
 
     /**
      * Initialize the app config service. Try to fetch an instance from the service manager, otherwise
@@ -78,7 +91,7 @@ module.exports = Application = declare({
      *
      * @inheritDoc
      */
-    bootstrap: function() {
+    bootstrap() {
         var serviceManager = this.getServiceManager(),
             configService, applicationConfig = this.applicationConfig;
 
@@ -101,14 +114,14 @@ module.exports = Application = declare({
         this.configService = configService;
 
         return this;
-    },
+    }
 
     /**
      * Look for services (configurable as 'app.services') to configure, bootstrap and launch.
      *
      * @inheritDoc
      */
-    launch: function() {
+    launch() {
         var configService = this.configService,
             serviceManager = this.getServiceManager(),
             servicesConfig = configService.get('app.services', {}),
@@ -158,4 +171,6 @@ module.exports = Application = declare({
 
         return this;
     }
-});
+}
+
+module.exports = Application;
