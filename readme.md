@@ -7,6 +7,10 @@
 `$ npm install srvoa`
 
 
+### LICENSE
+
+The files in this archive are released under BSD-2-Clause license. You can find a copy of this license in LICENSE.md.
+
 ---
 ##### Attribution
 
