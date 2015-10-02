@@ -7,7 +7,8 @@
     "email": "az@kreatiefer.de"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel/register --recursive"
+    "test": "mocha --compilers js:babel/register --recursive",
+    "build": "babel -d build Service.js ServiceManager.js Application.js ConfigService.js"
   },
   "main": "package.js",
   "keywords": [
