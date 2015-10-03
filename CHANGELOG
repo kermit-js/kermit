@@ -1,0 +1,21 @@
+2015/10/03 - 1.0.0
+    - Get rid of decl/declare and use es6 classes. (#1)
+    - More verbose licensing. (#2)
+    - Integrate Babel for es5 compatibility. (#3)
+    - Update CI integration.  (#4)
+    - Improve the readme and introduce this CHANGELOG.
+
+2015/06/13 - 0.3.0
+    - Add application configuration and service management functionality.
+
+2015/06/12 - 0.2.1
+    - Update to decl 0.2.
+    - Add ci status badge image.
+    - Improve js docs.
+
+2015/06/10 - 0.2.0
+    - Improve service manager injection into services.
+
+2015/06/10 - 0.1.0
+    - Add node badge icon.
+    - Initial setup: Introduce Application, Service, ServiceManager and ConfigService.
