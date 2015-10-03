@@ -155,7 +155,7 @@ modules.exports = DemoService;
 ```
 ---
 
-Running `ǹode application` will output the following to the cli:
+Running `node application` will output the following to the cli:
 
 ```
 slogan: Hey dude!
