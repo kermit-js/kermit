@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "mocha --compilers js:babel/register --recursive",
-    "build": "babel -d build Service.js ServiceManager.js Application.js ConfigService.js"
+    "build": "babel -d build Service.js ServiceManager.js Application.js ConfigService.js",
+    "postinstall": "node bin/postinstall"
   },
   "main": "package.js",
   "keywords": [
