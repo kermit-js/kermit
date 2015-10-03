@@ -8,8 +8,8 @@
 "use strict";
 
 module.export = {
-    Application: require('./Application'),
-    ConfigService: require('./ConfigService'),
-    Service: require('./Service'),
-    ServiceManager: require('./ServiceManager')
+    Application: require('./build/Application'),
+    ConfigService: require('./build/ConfigService'),
+    Service: require('./build/Service'),
+    ServiceManager: require('./build/ServiceManager')
 };

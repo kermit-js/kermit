@@ -1,3 +1,10 @@
+/**
+ * srvoa - soa infrastructure for node js
+ *
+ * @copyright   Copyright (c) 2015, Alrik Zachert
+ * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
+ */
+
 var assert = require('assert'),
     Service = require('../Service'),
     Application = require('../Application'),
@@ -18,7 +25,7 @@ describe('srvoa::application', function() {
     });
 
     it('allows passing a service manager instance on construction time.', function() {
-        var serviceManager = new ServiceManager;
+        var serviceManager = new ServiceManager,
             app = new Application(serviceManager);
 
         assert(app.getServiceManager() === serviceManager);

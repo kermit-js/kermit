@@ -1,46 +1,46 @@
-var declare = require('decl/declare'),
-    Service = require('../../Service'),
+/**
+ * srvoa - soa infrastructure for node js
+ *
+ * @copyright   Copyright (c) 2015, Alrik Zachert
+ * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
+ */
+
+"use strict";
+
+var Service = require('../../Service'),
     a = 0, b = 0, c = 0;
 
-var TestService = declare({
-    extend: Service,
-
-    configure: function(config) {
+class TestService extends Service {
+    configure(config) {
         this.config = config || {};
 
         this.configureOrder = ++a;
 
         return this;
-    },
+    }
 
-    bootstrap: function() {
+    bootstrap() {
         this.bootstrapOrder = ++b;
 
         return this;
-    },
+    }
 
-    launch: function() {
+    launch() {
         this.launchOrder = ++c;
 
         return this;
     }
-});
+}
 
-var Service1 = declare({
-    extend: TestService
-});
+class Service1 extends  TestService {}
 
-var Service2 = declare({
-    extend: TestService,
-});
+class Service2 extends  TestService {}
 
-var Service3 = declare({
-    extend: TestService,
-
-    statics: {
-        CONFIG_KEY: 's3'
+class Service3 extends  TestService {
+    static get CONFIG_KEY() {
+        return 's3';
     }
-});
+}
 
 module.exports = {
     app: {
