@@ -31,11 +31,15 @@ if (v8Version[0] > requiredVersion[0] || (
         if (err) {
             console.info('There is no build of srvoa. Calling `npm run ' + packagePath + ' build`.');
             exec('npm run ' + packagePath + ' build', function(err, stdout, stderr) {
-                console.log('stdout: ' + stdout);
-                console.log('stderr: ' + stderr);
+                if (stdout) {
+                    console.info('[stdout]: ' + stdout);
+                }
+                if (stderr) {
+                    console.err('[stderr]: ' + stderr);
+                }
 
                 if (err) {
-                    console.log('exec error: ' + err);
+                    throw new Error(err);
                 }
             });
         }
