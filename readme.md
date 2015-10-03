@@ -107,9 +107,7 @@ modules.exports = {
 
 var BaseApp = require('srvoa').Application;
 
-class Application extends BaseApp {
-
-}
+class Application extends BaseApp {}
 
 modules.exports = Application;
 ```
@@ -137,7 +135,7 @@ class DemoService extends Service {
         this.slogan = config.slogan;
         this.secret = config.secret;
 
-        return this:
+        return this;
     }
 
     launch() {
