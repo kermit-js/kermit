@@ -162,7 +162,7 @@ slogan: Hey dude!
 secret: 1234
 ```
 
-## TODO
+### TODO
 
 - Move the code above into a demo application repository
 - Improve the docs
@@ -170,9 +170,16 @@ secret: 1234
     - Examples
 - Write third party module wrappers
 
+
+### CHANGELOG
+
+Please have a look at [CHANGELOG](CHANGELOG).
+
+
 ### LICENSE
 
-The files in this archive are released under BSD-2-Clause license. You can find a copy of this license in LICENSE.md.
+The files in this archive are released under BSD-2-Clause license.
+You can find a copy of this license in [LICENSE.md](LICENSE.md).
 
 
 ---
