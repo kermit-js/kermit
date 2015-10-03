@@ -9,6 +9,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel/register --recursive",
     "build": "babel -d build Service.js ServiceManager.js Application.js ConfigService.js",
+    "prepublish": "npm run build",
     "postinstall": "node bin/postinstall"
   },
   "main": "package.js",
