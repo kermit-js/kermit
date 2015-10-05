@@ -10,6 +10,13 @@
 var fs = require('fs'),
     Service = require('./Service');
 
+/**
+ * Calculate the type of a value - used by recursive merge logic.
+ *
+ * @private
+ * @param value
+ * @returns {string}
+ */
 function getConfigType(value) {
     var type = typeof value;
 
@@ -22,6 +29,13 @@ function getConfigType(value) {
     return type;
 }
 
+/**
+ * Recursively merge object src into dest. Array values won't be merged but overridden.
+ *
+ * @param dest
+ * @param src
+ * @returns {*}
+ */
 function mergeConfig(dest, src) {
     var property,
         value,
@@ -31,7 +45,7 @@ function mergeConfig(dest, src) {
     for (property in src) {
         value = src[property];
 
-        if (!property in dest) {
+        if (!(property in dest)) {
             dest[property] = value;
         } else if (value === null) {
             delete dest[property];
