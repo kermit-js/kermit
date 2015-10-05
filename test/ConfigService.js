@@ -95,6 +95,22 @@ describe('srvoa::config-service', function() {
         assert(srv.get('a').length === 1 && srv.get('a')[0] === 2);
     });
 
+    it('should delete a config key when overriden with null.', function() {
+        var srv = new ConfigService;
+
+        srv.setConfig({
+            a: 'test',
+            b: {}
+        }, {
+            a: null,
+            b: null
+        });
+
+        assert(srv.get('a') === undefined);
+        assert(srv.get('b') === undefined);
+    });
+
+
     it('should merge multiple config files.', function() {
         var srv = new ConfigService,
             files = [
