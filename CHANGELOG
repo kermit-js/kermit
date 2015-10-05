@@ -1,3 +1,6 @@
+2015/10/05 - 1.1.1
+    - Fix coveralls.io integration - post current build branch.
+
 2015/10/05 - 1.1.0
     - Add coveralls.io integration (CI). (#7)
     - Add more tests. (#8)

@@ -27,7 +27,7 @@ publish coveralls:
   script:
     - npm install
     - npm run-script test-and-cover
-    - COVERALLS_SERVICE_NAME="GitLab CI" COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} npm run-script publish-coveralls
+    - COVERALLS_SERVICE_NAME="GitLab CI" COVERALLS_GIT_COMMIT=${CI_BUILD_REF} COVERALLS_GIT_BRANCH=${CI_BUILD_REF_NAME} COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} npm run-script publish-coveralls
   tags:
       - npm
   except:
