@@ -18,10 +18,11 @@
 1. An application is complex. So lets split it into functional modules (**Services**),
 each of them being way more **simple** and **exchangeable**.
 2. All Services have an unified interface `configure([serviceConfig])`, `bootstrap()`, `launch()`.
-3. The **ServiceManager** is the di-container of srvoa in which all services are registered.
-4. All Services have access to the ServiceManager.
-5. An Application is a Service, that manages dependent services and their configuration in the ServiceManager.
-6. An Application manages the life-cycle of its dependent services.
+3. All Services are **EventEmitters**.
+4. The **ServiceManager** is the di-container of srvoa in which all services are registered.
+5. All Services have access to the ServiceManager.
+6. An Application is a Service, that manages dependent services and their configuration in the ServiceManager.
+7. An Application manages the life-cycle of its dependent services.
 
 
 ### The Vision
