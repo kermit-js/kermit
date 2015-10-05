@@ -8,6 +8,8 @@
   },
   "scripts": {
     "test": "mocha --compilers js:babel/register --recursive",
+    "test-and-cover": "babel-node ./node_modules/.bin/isparta cover _mocha --report lcovonly -- -R spec",
+    "publish-coveralls": "cat ./coverage/lcov.info | COVERALLS_GIT_COMMIT=`git rev-parse HEAD` node_modules/coveralls/bin/coveralls.js",
     "build": "babel -d build Service.js ServiceManager.js Application.js ConfigService.js",
     "prepublish": "npm run build",
     "postinstall": "node bin/postinstall"
@@ -32,6 +34,9 @@
   },
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "babel": "^5.8.23"
+    "babel": "^5.8.23",
+    "coveralls": "^2.11.4",
+    "isparta": "^3.1.0",
+    "mocha-lcov-reporter": "^1.0.0"
   }
 }
