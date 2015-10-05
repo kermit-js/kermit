@@ -5,11 +5,19 @@
  * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
  */
 
-var assert = require('assert'),
+const
+    assert = require('assert'),
     Service = require('../Service'),
-    ServiceManager = require('../ServiceManager');
+    ServiceManager = require('../ServiceManager'),
+    EventEmitter = require('events').EventEmitter;
 
 describe('srvoa::service', function() {
+    it('extends the event emitter.', function() {
+        var srv = new Service;
+
+        assert(srv instanceof EventEmitter);
+    });
+
     it('provides a configure method.', function() {
         var srv = new Service;
 
