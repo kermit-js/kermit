@@ -10,10 +10,16 @@ var assert = require('assert'),
     ServiceManager = require('../ServiceManager');
 
 describe('srvoa::service', function() {
-    it('provides a configure mothod.', function() {
+    it('provides a configure method.', function() {
         var srv = new Service;
 
         assert(typeof srv.configure === 'function');
+    });
+
+    it('provides a fluent interface on configure method.', function() {
+        var srv = new Service;
+
+        assert(srv.configure() === srv);
     });
 
     it('provides a bootstrap method.', function() {
@@ -22,10 +28,22 @@ describe('srvoa::service', function() {
         assert(typeof srv.bootstrap === 'function');
     });
 
+    it('provides a fluent interface on bootstrap method.', function() {
+        var srv = new Service;
+
+        assert(srv.bootstrap() === srv);
+    });
+
     it('provides a launch method.', function() {
         var srv = new Service;
 
         assert(typeof srv.launch === 'function');
+    });
+
+    it('provides a fluent interface on launch method.', function() {
+        var srv = new Service;
+
+        assert(srv.launch() === srv);
     });
 
     it('allows passing a service manager instance on construction time.', function() {

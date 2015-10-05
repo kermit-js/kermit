@@ -59,6 +59,25 @@ describe('srvoa::config-service', function() {
         });
     });
 
+    it('should not fail when trying to access non existent config path.', function() {
+        var srv = new ConfigService;
+
+        srv.setConfig({
+            key1: null,
+            key2: false,
+            key3: undefined,
+            key4: "",
+            key5: 12
+        });
+
+        // use default value for assertion
+        assert(srv.get('key1.xyz', true));
+        assert(srv.get('key2.xyz', true));
+        assert(srv.get('key3.xyz', true));
+        assert(srv.get('key4.xyz', true));
+        assert(srv.get('key5.xyz', true));
+    });
+
     it('should merge multiple config hashes.', function() {
         var srv = new ConfigService;
 
@@ -83,6 +102,34 @@ describe('srvoa::config-service', function() {
         assert(srv.get('nested.foo') === 'ok');
     });
 
+    it('should not try to merge arrays but override them.', function() {
+        var srv = new ConfigService;
+
+        srv.setConfig({
+            a: [1, 2]
+        }, {
+            a: [2]
+        });
+
+        assert(srv.get('a').length === 1 && srv.get('a')[0] === 2);
+    });
+
+    it('should delete a config key when overriden with null.', function() {
+        var srv = new ConfigService;
+
+        srv.setConfig({
+            a: 'test',
+            b: {}
+        }, {
+            a: null,
+            b: null
+        });
+
+        assert(srv.get('a') === undefined);
+        assert(srv.get('b') === undefined);
+    });
+
+
     it('should merge multiple config files.', function() {
         var srv = new ConfigService,
             files = [
@@ -99,5 +146,24 @@ describe('srvoa::config-service', function() {
 
         assert(srv.get('nested.bar') === 1);
         assert(srv.get('nested.foo') === 'ok');
+    });
+
+    it('should give access to the config hash.', function() {
+        var srv = new ConfigService,
+            files = [
+                __dirname + '/config/config-1.js',
+                __dirname + '/config/config-2.js'
+            ];
+
+        srv.configure({
+            files: files
+        }).bootstrap().launch();
+
+        var config = srv.getConfig();
+
+        assert(config.foo === 1);
+        assert(config.bar === 'ok');
+        assert(config.nested.bar === 1);
+        assert(config.nested.foo === 'ok');
     });
 });

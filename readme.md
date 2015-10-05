@@ -1,6 +1,7 @@
 [![NPM](https://nodei.co/npm/srvoa.png?downloads=true)](https://nodei.co/npm/srvoa/)
 ---
 [![build status](https://ci.gitlab.com/projects/3656/status.png?ref=master)](https://ci.gitlab.com/projects/3656?ref=master)
+[![coverage status](https://coveralls.io/repos/alrik/node-srvoa/badge.svg?branch=master&service=github)](https://coveralls.io/github/alrik/node-srvoa?branch=master)
 
 # srvoa - 1.0.2
 

@@ -45,9 +45,9 @@ class Service3 extends  TestService {
 module.exports = {
     app: {
         services: {
-            s2: Service1,
-            s1: TestService,
-            s3: TestService
+            s2: Service2,
+            s1: Service1,
+            s3: Service3
         }
     },
 
