@@ -15,7 +15,8 @@ build the package:
 execute npm tests:
   stage: test
   script:
-    - npm run-script test-and-cover
+    - npm install
+    - npm test
   tags:
     - npm
   except:
@@ -24,8 +25,11 @@ execute npm tests:
 publish coveralls:
   stage: deploy
   script:
+    - npm install
+    - npm run-script test-and-cover
     - COVERALLS_SERVICE_NAME="GitLab CI" npm run-script publish-coveralls
   tags:
       - npm
   except:
     - tags
+  allow_failure: true
