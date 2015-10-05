@@ -7,10 +7,13 @@
 
 "use strict";
 
+const EventEmitter = require('events').EventEmitter;
+
+
 /**
  * Abstract class that defines the srvoa service interface.
  */
-class Service {
+class Service extends EventEmitter {
     /**
      * The local reference to the service manager instance.
      *
@@ -24,6 +27,8 @@ class Service {
      * @param {ServiceManager} [serviceManager] - The service manager instance.
      */
     constructor(serviceManager) {
+        super();
+
         this.serviceManager = serviceManager || null;
     }
 
