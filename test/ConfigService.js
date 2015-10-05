@@ -59,6 +59,25 @@ describe('srvoa::config-service', function() {
         });
     });
 
+    it('should not fail when trying to access non existent config path.', function() {
+        var srv = new ConfigService;
+
+        srv.setConfig({
+            key1: null,
+            key2: false,
+            key3: undefined,
+            key4: "",
+            key5: 12
+        });
+
+        // use default value for assertion
+        assert(srv.get('key1.xyz', true));
+        assert(srv.get('key2.xyz', true));
+        assert(srv.get('key3.xyz', true));
+        assert(srv.get('key4.xyz', true));
+        assert(srv.get('key5.xyz', true));
+    });
+
     it('should merge multiple config hashes.', function() {
         var srv = new ConfigService;
 
@@ -127,5 +146,24 @@ describe('srvoa::config-service', function() {
 
         assert(srv.get('nested.bar') === 1);
         assert(srv.get('nested.foo') === 'ok');
+    });
+
+    it('should give access to the config hash.', function() {
+        var srv = new ConfigService,
+            files = [
+                __dirname + '/config/config-1.js',
+                __dirname + '/config/config-2.js'
+            ];
+
+        srv.configure({
+            files: files
+        }).bootstrap().launch();
+
+        var config = srv.getConfig();
+
+        assert(config.foo === 1);
+        assert(config.bar === 'ok');
+        assert(config.nested.bar === 1);
+        assert(config.nested.foo === 'ok');
     });
 });
