@@ -175,13 +175,13 @@ secret: 1234
 
 ### CHANGELOG
 
-Please have a look at [CHANGELOG](CHANGELOG).
+Please have a look at [CHANGELOG](https://gitlab.com/a-z/node-srvoa/raw/master/CHANGELOG).
 
 
 ### LICENSE
 
 The files in this archive are released under BSD-2-Clause license.
-You can find a copy of this license in [LICENSE.md](LICENSE.md).
+You can find a copy of this license in [LICENSE](https://gitlab.com/a-z/node-srvoa/raw/master/LICENSE).
 
 
 ---
