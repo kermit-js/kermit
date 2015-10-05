@@ -14,7 +14,7 @@ function getConfigType(value) {
     var type = typeof value;
 
     if (type === 'object') {
-        if (type instanceof Array) {
+        if (Array.isArray(value)) {
             type = 'array';
         }
     }
