@@ -1,3 +1,9 @@
+2015/10/05 - 1.0.2
+    - Fix config service merge logic and improve its performance - be aware of operator precedence.
+
+2015/10/05 - 1.0.1
+    - Fix config service merge logic. Do not merge array properties, just override them.
+
 2015/10/03 - 1.0.0
     - Get rid of decl/declare and use es6 classes. (#1)
     - More verbose licensing. (#2)
