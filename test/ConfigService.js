@@ -83,6 +83,18 @@ describe('srvoa::config-service', function() {
         assert(srv.get('nested.foo') === 'ok');
     });
 
+    it('should not try to merge arrays but override them.', function() {
+        var srv = new ConfigService;
+
+        srv.setConfig({
+            a: [1, 2]
+        }, {
+            a: [2]
+        });
+
+        assert(srv.get('a').length === 1 && srv.get('a')[0] === 2);
+    });
+
     it('should merge multiple config files.', function() {
         var srv = new ConfigService,
             files = [
