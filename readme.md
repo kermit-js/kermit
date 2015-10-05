@@ -1,8 +1,9 @@
 [![NPM](https://nodei.co/npm/srvoa.png?downloads=true)](https://nodei.co/npm/srvoa/)
 ---
 [![build status](https://ci.gitlab.com/projects/3656/status.png?ref=master)](https://ci.gitlab.com/projects/3656?ref=master)
+[![coverage status](https://coveralls.io/repos/alrik/node-srvoa/badge.svg?branch=master&service=github)](https://coveralls.io/github/alrik/node-srvoa?branch=master)
 
-# srvoa - 1.0.2
+# srvoa - 1.1.0
 
 - is the **infrastructure** for service oriented architecture (**SOA**) for node.js
 - provides **unified interfaces** for writing **modular** apps and (micro-)**services**
@@ -17,10 +18,11 @@
 1. An application is complex. So lets split it into functional modules (**Services**),
 each of them being way more **simple** and **exchangeable**.
 2. All Services have an unified interface `configure([serviceConfig])`, `bootstrap()`, `launch()`.
-3. The **ServiceManager** is the di-container of srvoa in which all services are registered.
-4. All Services have access to the ServiceManager.
-5. An Application is a Service, that manages dependent services and their configuration in the ServiceManager.
-6. An Application manages the life-cycle of its dependent services.
+3. All Services are **EventEmitters**.
+4. The **ServiceManager** is the di-container of srvoa in which all services are registered.
+5. All Services have access to the ServiceManager.
+6. An Application is a Service, that manages dependent services and their configuration in the ServiceManager.
+7. An Application manages the life-cycle of its dependent services.
 
 
 ### The Vision
@@ -173,13 +175,13 @@ secret: 1234
 
 ### CHANGELOG
 
-Please have a look at [CHANGELOG](CHANGELOG).
+Please have a look at [CHANGELOG](https://gitlab.com/a-z/node-srvoa/raw/master/CHANGELOG).
 
 
 ### LICENSE
 
 The files in this archive are released under BSD-2-Clause license.
-You can find a copy of this license in [LICENSE.md](LICENSE.md).
+You can find a copy of this license in [LICENSE](https://gitlab.com/a-z/node-srvoa/raw/master/LICENSE).
 
 
 ---

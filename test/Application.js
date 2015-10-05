@@ -37,6 +37,25 @@ describe('srvoa::application', function() {
         assert(app.configure().bootstrap().getConfigService() instanceof ConfigService);
     });
 
+    it('should use existent config service from service manager.', function() {
+        var sm = new ServiceManager,
+            configService = new ConfigService,
+            app = new Application(sm);
+
+        sm.set(Application.APP_CONFIG_SERVICE_KEY, configService);
+
+        assert(app.getConfigService() === null);
+        assert(app.configure().bootstrap().getConfigService() === configService);
+    });
+
+    it('allows setting the config service instance with fluent interface.', function() {
+        var app = new Application,
+            configService = new ConfigService;
+
+        assert(app.setConfigService(configService) === app);
+        assert(app.getConfigService() === configService);
+    });
+
     it('should be able to read and merge config from multiple files.', function() {
         var app = new Application;
 
@@ -44,6 +63,22 @@ describe('srvoa::application', function() {
             files: [
                 __dirname + '/config/app.config.global.js',
                 __dirname + '/config/app.config.local.js'
+            ]
+        });
+
+        app.bootstrap();
+
+        assert(app.getConfigService().get('foo.bar') === 123);
+        assert(app.getConfigService().get('foo.baz') === 'ok');
+    });
+
+    it('should be able to take and merge multiple configs.', function() {
+        var app = new Application;
+
+        app.configure({
+            configs: [
+                require(__dirname + '/config/app.config.global.js'),
+                require(__dirname + '/config/app.config.local.js')
             ]
         });
 

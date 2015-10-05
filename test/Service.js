@@ -5,15 +5,29 @@
  * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
  */
 
-var assert = require('assert'),
+const
+    assert = require('assert'),
     Service = require('../Service'),
-    ServiceManager = require('../ServiceManager');
+    ServiceManager = require('../ServiceManager'),
+    EventEmitter = require('events').EventEmitter;
 
 describe('srvoa::service', function() {
-    it('provides a configure mothod.', function() {
+    it('extends the event emitter.', function() {
+        var srv = new Service;
+
+        assert(srv instanceof EventEmitter);
+    });
+
+    it('provides a configure method.', function() {
         var srv = new Service;
 
         assert(typeof srv.configure === 'function');
+    });
+
+    it('provides a fluent interface on configure method.', function() {
+        var srv = new Service;
+
+        assert(srv.configure() === srv);
     });
 
     it('provides a bootstrap method.', function() {
@@ -22,10 +36,22 @@ describe('srvoa::service', function() {
         assert(typeof srv.bootstrap === 'function');
     });
 
+    it('provides a fluent interface on bootstrap method.', function() {
+        var srv = new Service;
+
+        assert(srv.bootstrap() === srv);
+    });
+
     it('provides a launch method.', function() {
         var srv = new Service;
 
         assert(typeof srv.launch === 'function');
+    });
+
+    it('provides a fluent interface on launch method.', function() {
+        var srv = new Service;
+
+        assert(srv.launch() === srv);
     });
 
     it('allows passing a service manager instance on construction time.', function() {
