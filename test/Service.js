@@ -7,6 +7,7 @@
 
 const
     assert = require('assert'),
+    Config = require('../Config'),
     Service = require('../Service'),
     ServiceManager = require('../ServiceManager'),
     EventEmitter = require('events').EventEmitter;
@@ -68,5 +69,31 @@ describe('srvoa::service', function() {
         srv.setServiceManager(serviceManager);
 
         assert(srv.getServiceManager() === serviceManager);
+    });
+
+    it('creates internal serviceConfig during configuration.', function() {
+        var srv = new Service();
+
+        assert(srv.serviceConfig === null, 'Expected `serviceConfig` to be null before configure is called.');
+
+        srv.configure();
+
+        assert(srv.serviceConfig instanceof Config, 'Expected `serviceConfig` to be instance of `Config` after configure is called.');
+    });
+
+    it('should pass the right config hash to serviceConfig.', function() {
+        var srv = new Service();
+
+        srv.configure({
+            test: {
+                test2: 1
+            }
+        });
+
+        assert(srv.serviceConfig.get('test.test2') === 1, 'Expected config key `test.test2` to equal 1.');
+
+        srv.configure({});
+
+        assert(srv.serviceConfig.get('test.test2') === undefined, 'Expected config key `test.test2` to equal undefined after resetting configuration.');
     });
 });
