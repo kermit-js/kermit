@@ -1,6 +1,6 @@
 {
   "name": "srvoa",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Infrastructure for service oriented architecture.",
   "author": {
     "name": "Alrik Zachert",
@@ -17,11 +17,12 @@
   "main": "package.js",
   "keywords": [
     "soa",
-    "service-manager",
+    "service manager",
     "infrastructure",
     "service oriented architecture",
     "application",
     "framework",
+    "foundation",
     "config",
     "services"
   ],
