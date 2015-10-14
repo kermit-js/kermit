@@ -44,7 +44,7 @@ class ConfigService extends Service {
      * @return  {ConfigService}
      */
     configure(config) {
-        if (typeof config.files !== 'undefined') {
+        if (config && typeof config.files !== 'undefined') {
             this.setFiles(config.files);
         }
 
