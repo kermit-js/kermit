@@ -1,6 +1,6 @@
 {
   "name": "srvoa",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Infrastructure for service oriented architecture.",
   "author": {
     "name": "Alrik Zachert",
@@ -10,18 +10,19 @@
     "test": "mocha --compilers js:babel/register --recursive",
     "test-and-cover": "./node_modules/.bin/babel-node ./node_modules/.bin/isparta cover _mocha --report lcovonly -- -R spec",
     "publish-coveralls": "cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
-    "build": "babel -d build Service.js ServiceManager.js Application.js ConfigService.js",
+    "build": "babel -d build Config.js Service.js ServiceManager.js Application.js ConfigService.js",
     "prepublish": "npm run build",
     "postinstall": "node bin/postinstall"
   },
   "main": "package.js",
   "keywords": [
     "soa",
-    "service-manager",
+    "service manager",
     "infrastructure",
     "service oriented architecture",
     "application",
     "framework",
+    "foundation",
     "config",
     "services"
   ],

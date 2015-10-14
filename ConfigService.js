@@ -8,61 +8,8 @@
 "use strict";
 
 var fs = require('fs'),
-    Service = require('./Service');
-
-/**
- * Calculate the type of a value - used by recursive merge logic.
- *
- * @private
- * @param value
- * @returns {string}
- */
-function getConfigType(value) {
-    var type = typeof value;
-
-    if (type === 'object') {
-        if (Array.isArray(value)) {
-            type = 'array';
-        }
-    }
-
-    return type;
-}
-
-/**
- * Recursively merge object src into dest. Array values won't be merged but overridden.
- *
- * @param dest
- * @param src
- * @returns {*}
- */
-function mergeConfig(dest, src) {
-    var property,
-        value,
-        destType,
-        srcType;
-
-    for (property in src) {
-        value = src[property];
-
-        if (!(property in dest)) {
-            dest[property] = value;
-        } else if (value === null) {
-            delete dest[property];
-        } else {
-            destType = getConfigType(dest[property]);
-            srcType = getConfigType(value);
-
-            if (destType === 'object' && srcType === 'object') {
-                mergeConfig(dest[property], value);
-            } else {
-                dest[property] = value;
-            }
-        }
-    }
-
-    return dest;
-}
+    Service = require('./Service'),
+    Config = require('./Config');
 
 /**
  * The srvoa application class.
@@ -75,9 +22,9 @@ class ConfigService extends Service {
      */
 
     /**
-     * The config hash.
+     * The config instance.
      *
-     * @property config {Object}
+     * @property config {Config}
      */
 
     /**
@@ -88,7 +35,7 @@ class ConfigService extends Service {
     constructor(serviceManager) {
         super(serviceManager);
 
-        this.config = {};
+        this.config = new Config;
         this.files = [];
     }
 
@@ -97,7 +44,7 @@ class ConfigService extends Service {
      * @return  {ConfigService}
      */
     configure(config) {
-        if (typeof config.files !== 'undefined') {
+        if (config && typeof config.files !== 'undefined') {
             this.setFiles(config.files);
         }
 
@@ -145,7 +92,8 @@ class ConfigService extends Service {
             i = 0, l = files.length,
             file, data;
 
-        this.config = {};
+        // reset the config
+        this.config.setConfig({});
 
         for (; i < l; ++i) {
             file = files[i];
@@ -153,7 +101,7 @@ class ConfigService extends Service {
             if (fs.existsSync(file)) {
                 data = require(file);
 
-                mergeConfig(this.config, data);
+                this.config.mergeConfig(data);
             }
         }
 
@@ -164,7 +112,7 @@ class ConfigService extends Service {
      * @return {Object}
      */
     getConfig() {
-        return Object(this.config);
+        return this.config.getHash();
     }
 
     /**
@@ -174,17 +122,7 @@ class ConfigService extends Service {
      * @return  {ConfigService}
      */
     setConfig(config) {
-        var l = arguments.length;
-
-        if (l === 1) {
-            this.config = arguments[0];
-        } else {
-            this.config = {};
-
-            for (var i = 0; i < l; ++i) {
-                mergeConfig(this.config, arguments[i]);
-            }
-        }
+        this.config.setConfig.apply(this.config, arguments);
 
         return this;
     }
@@ -195,27 +133,7 @@ class ConfigService extends Service {
      * @returns {*}
      */
     get(key, defaultValue) {
-        var parts = key.split('.'),
-            l = parts.length,
-            i = 0,
-            scopeKey,
-            scope = this.config;
-
-        try {
-            for (; i < l; ++i) {
-                scopeKey = parts[i];
-
-                if (scopeKey in scope) {
-                    scope = scope[scopeKey];
-                } else {
-                    return defaultValue;
-                }
-            }
-
-            return scope;
-        } catch (e) {
-            return defaultValue;
-        }
+        return this.config.get(key, defaultValue);
     }
 }
 

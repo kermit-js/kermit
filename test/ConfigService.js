@@ -44,6 +44,14 @@ describe('srvoa::config-service', function() {
        });
     });
 
+    it('should not fail with empty config.', function() {
+        assert.doesNotThrow(function() {
+            var srv = new ConfigService;
+
+            srv.configure().bootstrap().launch();
+        });
+    });
+
     it('should return undefined if key was not found.', function() {
         var srv = new ConfigService;
 

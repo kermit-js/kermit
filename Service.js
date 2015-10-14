@@ -8,7 +8,7 @@
 "use strict";
 
 const EventEmitter = require('events').EventEmitter;
-
+const Config = require('./Config');
 
 /**
  * Abstract class that defines the srvoa service interface.
@@ -21,6 +21,12 @@ class Service extends EventEmitter {
      */
 
     /**
+     * The config passed to configure as config service..
+     *
+     * @property serviceConfig {Config}
+     */
+
+    /**
      * Create a new service instance.
      *
      * @constructor
@@ -30,6 +36,7 @@ class Service extends EventEmitter {
         super();
 
         this.serviceManager = serviceManager || null;
+        this.serviceConfig = null;
     }
 
     /**
@@ -60,7 +67,7 @@ class Service extends EventEmitter {
      * @return  {Service}
      */
     configure(config) {
-        return this;
+        return this._applyConfig(config);
     }
 
     /**
@@ -78,6 +85,38 @@ class Service extends EventEmitter {
      * @return  {Service}
      */
     launch() {
+        return this;
+    }
+
+    /**
+     * Return the default service config.
+     *
+     * @returns {Object|false}
+     */
+    getDefaultServiceConfig() {
+        return false;
+    }
+
+    /**
+     * Take a config hash and turn it into a config instance that is stored as `serviceConfig` property.
+     * Before that the default service config is applied.
+     *
+     * @param config
+     * @returns {Service}
+     * @private
+     */
+    _applyConfig(config) {
+        var defaultConfig = this.getDefaultServiceConfig();
+
+        this.serviceConfig = new Config;
+
+        if (defaultConfig !== false) {
+            this.serviceConfig.setConfig(defaultConfig);
+        }
+        if (config) {
+            this.serviceConfig.mergeConfig(config);
+        }
+
         return this;
     }
 }
