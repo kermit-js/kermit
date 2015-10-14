@@ -10,6 +10,7 @@ const
     Config = require('../Config'),
     Service = require('../Service'),
     ServiceManager = require('../ServiceManager'),
+    ServiceWithDefaultConfig = require('./lib/ServiceWithDefaultConfig'),
     EventEmitter = require('events').EventEmitter;
 
 describe('srvoa::service', function() {
@@ -95,5 +96,31 @@ describe('srvoa::service', function() {
         srv.configure({});
 
         assert(srv.serviceConfig.get('test.test2') === undefined, 'Expected config key `test.test2` to equal undefined after resetting configuration.');
+    });
+
+    it('should apply the default service config during configuration.', function() {
+        var srv = new ServiceWithDefaultConfig();
+
+        assert(srv.serviceConfig === null, 'Expected `serviceConfig` to be null before configure is called.');
+
+        srv.configure();
+
+        assert(srv.serviceConfig instanceof Config, 'Expected `serviceConfig` to be instance of `Config` after configure is called.');
+        assert(srv.serviceConfig.get('test.test2') === 1, 'Expected default service config to be applied thus config key `test.test2` must equal 1.');
+    });
+
+    it('should merge config into default service config during configuration.', function() {
+        var srv = new ServiceWithDefaultConfig();
+
+        srv.configure({
+            test: {
+                test2: 2
+            },
+            test2: 1
+        });
+
+        assert(srv.serviceConfig.get('test.test2') === 2, 'Expected configs got merged properly thus config key `test.test2` must equal 2.');
+        assert(srv.serviceConfig.get('test.test3') === 1, 'Expected configs got merged properly thus config key `test.test3` must equal 1.');
+        assert(srv.serviceConfig.get('test2') === 1, 'Expected configs got merged properly thus config key `test2` must equal 1.');
     });
 });
