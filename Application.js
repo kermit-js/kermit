@@ -125,34 +125,52 @@ class Application extends Service {
         var configService = this.configService,
             serviceManager = this.getServiceManager(),
             servicesConfig = configService.get('app.services', {}),
-            servicesToLoad = [],
-            serviceKey, serviceClass, service, i, l;
+            servicesToLoad = [];
 
-        for (serviceKey in servicesConfig) {
-            serviceClass = servicesConfig[serviceKey];
+        for (let serviceKey in servicesConfig) {
+            let
+              serviceDefinition = servicesConfig[serviceKey];
 
-            if (serviceClass) {
+            if (typeof serviceDefinition === 'function') {
+                serviceDefinition = {
+                    service: serviceDefinition
+                };
+            }
+
+            if (serviceDefinition !== null && typeof serviceDefinition.service === 'function') {
                 // instantiate the fetched service class.
-                service = new serviceClass(serviceManager);
+                let service = new (serviceDefinition.service)(serviceManager);
                 serviceManager.set(serviceKey, service);
+
+                // determine the configkey
+                if (typeof serviceDefinition.configKey !== 'string' && serviceDefinition.configKey !== null) {
+                    if (typeof service.configKey === 'string' || service.configKey === null) {
+                        serviceDefinition.configKey = service.configKey
+                    } else if (typeof serviceDefinition.service.CONFIG_KEY === 'string' || serviceDefinition.service.CONFIG_KEY === null) {
+                        serviceDefinition.configKey = serviceDefinition.service.CONFIG_KEY;
+                    } else {
+                        serviceDefinition.configKey = serviceKey;
+                    }
+                }
 
                 servicesToLoad.push({
                     key: serviceKey,
                     instance: service,
-                    definition: serviceClass
+                    definition: serviceDefinition.service,
+                    configKey: serviceDefinition.configKey
                 });
             }
         }
 
         // configure all required services
-        for (i = 0, l = servicesToLoad.length; i < l; ++i) {
-            service = servicesToLoad[i];
+        for (let i = 0, l = servicesToLoad.length; i < l; ++i) {
+            let service = servicesToLoad[i];
 
-            // in case the service class has a config key defined
+            // in case the service has a config key defined
             // try to load the service specific config and pass this to the configure method.
-            if (typeof service.definition.CONFIG_KEY !== 'undefined') {
+            if (typeof service.configKey === 'string') {
                 service.instance.configure(
-                    configService.get(service.definition.CONFIG_KEY)
+                    configService.get(service.configKey)
                 );
             } else {
                 service.instance.configure();
@@ -160,12 +178,12 @@ class Application extends Service {
         }
 
         // bootstrap all required services
-        for (i = 0, l = servicesToLoad.length; i < l; ++i) {
+        for (let i = 0, l = servicesToLoad.length; i < l; ++i) {
             servicesToLoad[i].instance.bootstrap();
         }
 
         // launch all required services
-        for (i = 0, l = servicesToLoad.length; i < l; ++i) {
+        for (let i = 0, l = servicesToLoad.length; i < l; ++i) {
             servicesToLoad[i].instance.launch();
         }
 
