@@ -89,17 +89,32 @@ class Service extends EventEmitter {
     }
 
     /**
+     * Return the default service config.
+     *
+     * @returns {Object|false}
+     */
+    getDefaultServiceConfig() {
+        return false;
+    }
+
+    /**
      * Take a config hash and turn it into a config instance that is stored as `serviceConfig` property.
+     * Before that the default service config is applied.
      *
      * @param config
      * @returns {Service}
      * @private
      */
     _applyConfig(config) {
+        var defaultConfig = this.getDefaultServiceConfig();
+
         this.serviceConfig = new Config;
 
+        if (defaultConfig !== false) {
+            this.serviceConfig.setConfig(defaultConfig);
+        }
         if (config) {
-            this.serviceConfig.setConfig(config);
+            this.serviceConfig.mergeConfig(config);
         }
 
         return this;
