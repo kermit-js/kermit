@@ -7,7 +7,8 @@
 
 "use strict";
 
-var fs = require('fs'),
+const
+    fs = require('fs'),
     Service = require('./Service'),
     Config = require('./Config');
 
