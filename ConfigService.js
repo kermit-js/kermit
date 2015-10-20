@@ -12,7 +12,8 @@ var fs = require('fs'),
     Config = require('./Config');
 
 /**
- * The srvoa application class.
+ * The srvoa config service class can read and merge (recursively) multiple config files.
+ * It wraps the config class and allows querying specific configs by nested-config-key-string-representation.
  */
 class ConfigService extends Service {
     /**
@@ -40,7 +41,10 @@ class ConfigService extends Service {
     }
 
     /**
-     * @param   {Object} config
+     * Configure the config service.
+     * The optional config hash may contain a `files` array.
+     *
+     * @param   {Object} config (optional)
      * @return  {ConfigService}
      */
     configure(config) {
@@ -52,6 +56,8 @@ class ConfigService extends Service {
     }
 
     /**
+     * Launch the config service by reading and merging the config files.
+     *
      * @inheritDoc
      */
     launch() {
@@ -109,6 +115,8 @@ class ConfigService extends Service {
     }
 
     /**
+     * Returns the config hash of the internal config instance.
+     *
      * @return {Object}
      */
     getConfig() {
@@ -128,7 +136,10 @@ class ConfigService extends Service {
     }
 
     /**
-     * @param   {String} key
+     * Retrieve a config by its key (dot separated string representation).
+     * If no config for the given key is found, the default value (if any) is returned.
+     *
+     * @param   {String} key The dot separared key eg. `srv.module.feature.setting`
      * @param   {*} defaultValue
      * @returns {*}
      */

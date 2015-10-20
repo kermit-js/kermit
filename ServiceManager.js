@@ -8,7 +8,8 @@
 "use strict";
 
 /**
- * The srvoa service manager
+ * The srvoa service manager.
+ * It is responsible for holding the service registry and giving shared access to the service instances.
  */
 class ServiceManager {
     /**
