@@ -6,6 +6,7 @@
  */
 
 var assert = require('assert'),
+    Application = require('../Application'),
     ServiceManager = require('../ServiceManager');
 
 describe('srvoa::service-manager::strictness', function() {
@@ -175,5 +176,22 @@ describe('srvoa::service-manager::strictness', function() {
         assert.doesNotThrow(function() {
             sm.remove('existent-service');
         });
+    });
+
+    it('should be aware of setting the strictness of the service-manager through application config.', function() {
+        var app = new Application;
+
+        app.configure({
+            configs: [{
+                'service-manager': {
+                    strictMode: true
+                }
+            }]
+        }).bootstrap().launch();
+
+        assert(
+            app.getServiceManager().getStrictMode() === true,
+            'The service manager`s strict mode has to be configurable through application config.'
+        );
     });
 });
