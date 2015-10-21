@@ -3,7 +3,7 @@
 [![build status](https://ci.gitlab.com/projects/3656/status.png?ref=master)](https://ci.gitlab.com/projects/3656?ref=master)
 [![coverage status](https://coveralls.io/repos/alrik/node-srvoa/badge.svg?branch=master&service=github)](https://coveralls.io/github/alrik/node-srvoa?branch=master)
 
-# srvoa - 1.2.0
+# srvoa - 1.3.0
 
 - is the **infrastructure** for service oriented architecture (**SOA**) for node.js
 - provides **unified interfaces** for writing **modular** apps and (micro-)**services**
@@ -12,6 +12,10 @@
 - is written in **ES6** with **ES5** compatible build using babel
 - is fully **tested** with mocha
 
+---
+Find the api docs on [srvoa.readme.io](https://srvoa.readme.io)
+
+---
 
 ## The Doctrine
 
@@ -168,7 +172,6 @@ secret: 1234
 
 - Move the code above into a demo application repository
 - Improve the docs
-    - Api Docs
     - Examples
 - Write third party module wrappers
 

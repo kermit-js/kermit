@@ -7,8 +7,9 @@
 
 "use strict";
 
-const EventEmitter = require('events').EventEmitter;
-const Config = require('./Config');
+const
+    EventEmitter = require('events').EventEmitter,
+    Config = require('./Config');
 
 /**
  * Abstract class that defines the srvoa service interface.

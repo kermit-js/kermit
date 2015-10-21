@@ -7,7 +7,8 @@
 
 "use strict";
 
-var Service = require('./Service'),
+const
+    Service = require('./Service'),
     ConfigService = require('./ConfigService'),
     ServiceManager = require('./ServiceManager');
 
@@ -110,6 +111,8 @@ class Application extends Service {
         } else if(typeof applicationConfig.configs !== 'undefined') {
             configService.setConfig.apply(configService, applicationConfig.configs);
         }
+
+        serviceManager.setStrictMode(configService.get(ServiceManager.STRICT_MODE_CONFIG_KEY, false));
 
         this.configService = configService;
 
