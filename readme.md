@@ -12,6 +12,10 @@
 - is written in **ES6** with **ES5** compatible build using babel
 - is fully **tested** with mocha
 
+---
+Find the api docs on [srvoa.readme.io](https://srvoa.readme.io)
+
+---
 
 ## The Doctrine
 
@@ -168,7 +172,6 @@ secret: 1234
 
 - Move the code above into a demo application repository
 - Improve the docs
-    - Api Docs
     - Examples
 - Write third party module wrappers
 
