@@ -19,12 +19,41 @@ class ServiceManager {
      */
 
     /**
+     * The strict mode flag of the service manager.
+     * If set to true, the service manager will throw errors.
+     *
+     * @property {boolean} strictMode
+     */
+
+    /**
      * Initialize services map.
      *
      * @constructor
      */
     constructor() {
         this.services = {};
+        this.strictMode = false;
+    }
+
+    /**
+     * Retrieves the strict mode flag of the service manager.
+     *
+     * @returns {boolean}
+     */
+    getStrictMode() {
+        return this.strictMode;
+    }
+
+    /**
+     * Sets the strict mode flag of the service manager.
+     *
+     * @param {boolean} strictMode
+     * @returns {ServiceManager}
+     */
+    setStrictMode(strictMode) {
+        this.strictMode = strictMode;
+
+        return this;
     }
 
     /**
@@ -36,7 +65,7 @@ class ServiceManager {
      * @return  {Object}|{undefined}
      */
     get(key, strict) {
-        if (strict === true && !this.has(key)) {
+        if (((this.strictMode === true && strict !== false) || strict === true) && !this.has(key)) {
             throw new Error(`Cannot return unknown service for key: ${key} in strict mode.`);
         }
 
@@ -53,7 +82,7 @@ class ServiceManager {
      * @return  {ServiceManager}
      */
     set(key, service, strict) {
-        if (strict === true && this.has(key)) {
+        if (((this.strictMode === true && strict !== false) || strict === true) && this.has(key)) {
             throw new Error(`Cannot re-register service for key: ${key} in strict mode.`);
         }
 
@@ -70,7 +99,7 @@ class ServiceManager {
      * @return  {ServiceManager}
      */
     remove(key, strict) {
-        if (strict === true && !this.has(key)) {
+        if (((this.strictMode === true && strict !== false) || strict === true) && !this.has(key)) {
             throw new Error(`Cannot remove unknown service for key: ${key} in strict mode.`);
         }
 
