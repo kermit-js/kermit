@@ -112,6 +112,8 @@ class Application extends Service {
             configService.setConfig.apply(configService, applicationConfig.configs);
         }
 
+        serviceManager.setStrictMode(configService.get(ServiceManager.STRICT_MODE_CONFIG_KEY, false));
+
         this.configService = configService;
 
         return this;

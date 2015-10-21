@@ -26,6 +26,15 @@ class ServiceManager {
      */
 
     /**
+     * The config key for setting the strict mode of the service manager from application/configuration context.
+     *
+     * @returns {string}
+     */
+    static get STRICT_MODE_CONFIG_KEY() {
+        return 'service-manager.strictMode';
+    }
+
+    /**
      * Initialize services map.
      *
      * @constructor
