@@ -31,9 +31,15 @@ class ServiceManager {
      * Lookup and return a service by its key.
      *
      * @param   {String} key
+     * @param   {Boolean} strict (optional) default false
+     * @throws  {Error} if strict mode is enabled and there is no such service.
      * @return  {Object}|{undefined}
      */
-    get(key) {
+    get(key, strict) {
+        if (strict === true && !this.has(key)) {
+            throw new Error(`Cannot return unknown service for key: ${key} in strict mode.`);
+        }
+
         return this.services[key];
     }
 
@@ -42,9 +48,15 @@ class ServiceManager {
      *
      * @param   {String} key
      * @param   {Object} service
+     * @param   {Boolean} strict (optional) default false
+     * @throws  {Error} if strict mode is enabled and a service for the given key already exists.
      * @return  {ServiceManager}
      */
-    set(key, service) {
+    set(key, service, strict) {
+        if (strict === true && this.has(key)) {
+            throw new Error(`Cannot re-register service for key: ${key} in strict mode.`);
+        }
+
         this.services[key] = service;
 
         return this;
@@ -54,9 +66,14 @@ class ServiceManager {
      * Delete the service for the given key.
      *
      * @param   {String} key
+     * @param   {Boolean} strict (optional) default false
      * @return  {ServiceManager}
      */
-    remove(key) {
+    remove(key, strict) {
+        if (strict === true && !this.has(key)) {
+            throw new Error(`Cannot remove unknown service for key: ${key} in strict mode.`);
+        }
+
         delete this.services[key];
 
         return this;
