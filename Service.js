@@ -1,8 +1,8 @@
 /**
- * srvoa - soa infrastructure for node js
+ * kermit - soa infrastructure for node js
  *
  * @copyright   Copyright (c) 2015, Alrik Zachert
- * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
+ * @license     https://gitlab.com/kermit-js/kermit/blob/master/LICENSE BSD-2-Clause
  */
 
 "use strict";
@@ -12,7 +12,7 @@ const
     Config = require('./Config');
 
 /**
- * Abstract class that defines the srvoa service interface.
+ * Abstract class that defines the kermit service interface.
  */
 class Service extends EventEmitter {
     /**
