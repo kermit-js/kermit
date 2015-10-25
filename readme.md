@@ -3,7 +3,7 @@
 [![build status](https://ci.gitlab.com/projects/3656/status.png?ref=master)](https://ci.gitlab.com/projects/3656?ref=master)
 [![coverage status](https://coveralls.io/repos/kermit-js/kermit/badge.svg?branch=master&service=github)](https://coveralls.io/github/kermit-js/kermit?branch=master)
 
-# kermit - 1.3.0
+# kermit - 2.0.0
 
 - is the **infrastructure** for service oriented architecture (**SOA**) for node.js
 - provides **unified interfaces** for writing **modular** apps and (micro-)**services**
