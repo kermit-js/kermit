@@ -1,8 +1,8 @@
 /**
- * srvoa - soa infrastructure for node js
+ * kermit - soa infrastructure for node js
  *
  * @copyright   Copyright (c) 2015, Alrik Zachert
- * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
+ * @license     https://gitlab.com/kermit-js/kermit/blob/master/LICENSE BSD-2-Clause
  */
 
 "use strict";
@@ -13,7 +13,7 @@ const
     Config = require('./Config');
 
 /**
- * The srvoa config service class can read and merge (recursively) multiple config files.
+ * The kermit config service class can read and merge (recursively) multiple config files.
  * It wraps the config class and allows querying specific configs by nested-config-key-string-representation.
  */
 class ConfigService extends Service {

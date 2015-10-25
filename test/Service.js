@@ -1,8 +1,8 @@
 /**
- * srvoa - soa infrastructure for node js
+ * kermit - soa infrastructure for node js
  *
  * @copyright   Copyright (c) 2015, Alrik Zachert
- * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
+ * @license     https://gitlab.com/kermit-js/kermit/blob/master/LICENSE BSD-2-Clause
  */
 
 const
@@ -13,7 +13,7 @@ const
     ServiceWithDefaultConfig = require('./lib/ServiceWithDefaultConfig'),
     EventEmitter = require('events').EventEmitter;
 
-describe('srvoa::service', function() {
+describe('kermit::service', function() {
     it('extends the event emitter.', function() {
         var srv = new Service;
 
