@@ -28,10 +28,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/a-z/node-srvoa"
+    "url": "gitlab:kermit-js/kermit"
   },
   "bugs": {
-    "url": "https://gitlab.com/a-z/node-srvoa/issues"
+    "url": "https://gitlab.com/kermit-js/kermit/issues"
   },
   "license": "BSD-2-Clause",
   "devDependencies": {

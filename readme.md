@@ -1,7 +1,7 @@
 [![NPM](https://nodei.co/npm/srvoa.png?downloads=true)](https://nodei.co/npm/srvoa/)
 ---
-[![build status](https://ci.gitlab.com/projects/3656/status.png?ref=master)](https://ci.gitlab.com/projects/3656?ref=master)
-[![coverage status](https://coveralls.io/repos/alrik/node-srvoa/badge.svg?branch=master&service=github)](https://coveralls.io/github/alrik/node-srvoa?branch=master)
+[![build status](https://ci.gitlab.com/projects/3656/status.png?ref=support/srvoa)](https://ci.gitlab.com/projects/3656?ref=support/srvoa)
+[![coverage status](https://coveralls.io/repos/kermit-js/kermit/badge.svg?branch=support/srvoa&service=github)](https://coveralls.io/github/kermit-js/kermit?branch=support/srvoa)
 
 # srvoa - 1.3.0
 
@@ -13,7 +13,7 @@
 - is fully **tested** with mocha
 
 ---
-Find the api docs on [srvoa.readme.io](https://srvoa.readme.io)
+Find the api docs on [kermit-js.readme.io](https://kermit-js.readme.io)
 
 ---
 
@@ -178,13 +178,13 @@ secret: 1234
 
 ### CHANGELOG
 
-Please have a look at [CHANGELOG](https://gitlab.com/a-z/node-srvoa/raw/master/CHANGELOG).
+Please have a look at [CHANGELOG](https://gitlab.com/kermit-js/kermit/raw/support/srvoa/CHANGELOG).
 
 
 ### LICENSE
 
 The files in this archive are released under BSD-2-Clause license.
-You can find a copy of this license in [LICENSE](https://gitlab.com/a-z/node-srvoa/raw/master/LICENSE).
+You can find a copy of this license in [LICENSE](https://gitlab.com/kermit-js/kermit/raw/support/srvoa/LICENSE).
 
 
 ---
