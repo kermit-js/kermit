@@ -1,3 +1,6 @@
+2015/10/25 - 2.0.0
+    - Rename srvoa to kermit.
+
 2015/10/21 - 1.3.0
     - Introduce strict service-manager api, add strict parameter to get, set and remove methods
     - Introduce service-manager's strict mode, that is configurable via application config
