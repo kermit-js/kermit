@@ -1,9 +1,9 @@
-[![NPM](https://nodei.co/npm/srvoa.png?downloads=true)](https://nodei.co/npm/srvoa/)
+[![NPM](https://nodei.co/npm/kermit.png?downloads=true)](https://nodei.co/npm/kermit/)
 ---
 [![build status](https://ci.gitlab.com/projects/3656/status.png?ref=master)](https://ci.gitlab.com/projects/3656?ref=master)
-[![coverage status](https://coveralls.io/repos/alrik/node-srvoa/badge.svg?branch=master&service=github)](https://coveralls.io/github/alrik/node-srvoa?branch=master)
+[![coverage status](https://coveralls.io/repos/kermit-js/kermit/badge.svg?branch=master&service=github)](https://coveralls.io/github/kermit-js/kermit?branch=master)
 
-# srvoa - 1.3.0
+# kermit - 1.3.0
 
 - is the **infrastructure** for service oriented architecture (**SOA**) for node.js
 - provides **unified interfaces** for writing **modular** apps and (micro-)**services**
@@ -13,7 +13,7 @@
 - is fully **tested** with mocha
 
 ---
-Find the api docs on [srvoa.readme.io](https://srvoa.readme.io)
+Find the api docs on [kermit-js.readme.io](https://kermit-js.readme.io)
 
 ---
 
@@ -23,7 +23,7 @@ Find the api docs on [srvoa.readme.io](https://srvoa.readme.io)
 each of them being way more **simple** and **exchangeable**.
 2. All Services have an unified interface `configure([serviceConfig])`, `bootstrap()`, `launch()`.
 3. All Services are **EventEmitters**.
-4. The **ServiceManager** is the di-container of srvoa in which all services are registered.
+4. The **ServiceManager** is the di-container of kermit in which all services are registered.
 5. All Services have access to the ServiceManager.
 6. An Application is a Service, that manages dependent services and their configuration in the ServiceManager.
 7. An Application manages the life-cycle of its dependent services.
@@ -31,18 +31,18 @@ each of them being way more **simple** and **exchangeable**.
 
 ### The Vision
 
-- There are many srvoa wrappers for popular node.js modules.
-- srvoa is ported to other environments / programming languages.
+- There are many kermit wrappers for popular node.js modules.
+- kermit is ported to other environments / programming languages.
 
 
 ## Install ##
 
-`$ npm install srvoa`
+`$ npm install kermit`
 
 
 ## Getting Started
 
-A simple demo srvoa application may look like this:
+A simple demo kermit application may look like this:
 
 - config
     - application.js
@@ -111,7 +111,7 @@ modules.exports = {
 ```js
 "use strict";
 
-var BaseApp = require('srvoa').Application;
+var BaseApp = require('kermit').Application;
 
 class Application extends BaseApp {}
 
@@ -123,7 +123,7 @@ modules.exports = Application;
 ```js
 "use strict";
 
-var Service = require('srvoa').Service;
+var Service = require('kermit').Service;
 
 class DemoService extends Service {
     static get CONFIG_KEY() {
@@ -178,13 +178,13 @@ secret: 1234
 
 ### CHANGELOG
 
-Please have a look at [CHANGELOG](https://gitlab.com/a-z/node-srvoa/raw/master/CHANGELOG).
+Please have a look at [CHANGELOG](https://gitlab.com/kermit-js/kermit/raw/master/CHANGELOG).
 
 
 ### LICENSE
 
 The files in this archive are released under BSD-2-Clause license.
-You can find a copy of this license in [LICENSE](https://gitlab.com/a-z/node-srvoa/raw/master/LICENSE).
+You can find a copy of this license in [LICENSE](https://gitlab.com/kermit-js/kermit/raw/master/LICENSE).
 
 
 ---

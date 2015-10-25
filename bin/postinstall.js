@@ -1,8 +1,8 @@
 /**
- * srvoa - soa infrastructure for node js
+ * kermit - soa infrastructure for node js
  *
  * @copyright   Copyright (c) 2015, Alrik Zachert
- * @license     https://gitlab.com/a-z/node-srvoa/blob/master/LICENSE BSD-2-Clause
+ * @license     https://gitlab.com/kermit-js/kermit/blob/master/LICENSE BSD-2-Clause
  */
 
 var fs = require('fs'),
@@ -22,14 +22,14 @@ if (v8Version[0] > requiredVersion[0] || (
         )
     )
 )) {
-    console.info('Your node installation supports es6 classes. Linking es6 version of srvoa.');
+    console.info('Your node installation supports es6 classes. Linking es6 version of kermit.');
     packageFile = 'package-es6.js';
 } else {
-    console.info('Your node installation does not support es6 classes. Linking babel polyfill version of srvoa.');
+    console.info('Your node installation does not support es6 classes. Linking babel polyfill version of kermit.');
 
     fs.stat(packagePath + '/build', function(err) {
         if (err) {
-            console.info('There is no build of srvoa. Calling `npm run ' + packagePath + ' build`.');
+            console.info('There is no build of kermit. Calling `npm run ' + packagePath + ' build`.');
             exec('npm run ' + packagePath + ' build', function(err, stdout, stderr) {
                 if (stdout) {
                     console.info('[stdout]: ' + stdout);
