@@ -5,6 +5,12 @@
 
 # srvoa - 1.3.0
 
+---
+srvoa is **deprecated** due to [kermit](https://www.npmjs.com/package/kermit).
+
+---
+
+
 - is the **infrastructure** for service oriented architecture (**SOA**) for node.js
 - provides **unified interfaces** for writing **modular** apps and (micro-)**services**
 - eases and unifies the **configuration** of apps and its modules
