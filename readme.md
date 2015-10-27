@@ -3,7 +3,7 @@
 [![build status](https://ci.gitlab.com/projects/3656/status.png?ref=support/srvoa)](https://ci.gitlab.com/projects/3656?ref=support/srvoa)
 [![coverage status](https://coveralls.io/repos/kermit-js/kermit/badge.svg?branch=support/srvoa&service=github)](https://coveralls.io/github/kermit-js/kermit?branch=support/srvoa)
 
-# srvoa - 1.3.1
+# srvoa - 1.3.2
 
 ---
 srvoa is **deprecated** due to [kermit](https://www.npmjs.com/package/kermit).
