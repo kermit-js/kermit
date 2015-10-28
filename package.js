@@ -9,6 +9,7 @@
 
 module.export = {
     Application: require('./Application'),
+    Config: require('./Config'),
     ConfigService: require('./ConfigService'),
     Service: require('./Service'),
     ServiceManager: require('./ServiceManager')
