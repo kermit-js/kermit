@@ -84,7 +84,7 @@ Avoid having sensible data in vcs.
 modules.exports = {
     app: {
         services: {
-          demo: require(__dirname + '/../src/DemoService')
+          demo: __dirname + '/../src/DemoService'
         }
     },
 
