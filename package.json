@@ -1,6 +1,6 @@
 {
   "name": "kermit",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Infrastructure for service oriented architecture.",
   "author": {
     "name": "Alrik Zachert",
@@ -25,6 +25,7 @@
     "foundation",
     "config",
     "services",
+    "microservice",
     "kermit"
   ],
   "repository": {
