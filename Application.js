@@ -134,13 +134,17 @@ class Application extends Service {
             let
               serviceDefinition = servicesConfig[serviceKey];
 
-            if (typeof serviceDefinition === 'function') {
+            if (typeof serviceDefinition === 'function' || typeof serviceDefinition === 'string') {
                 serviceDefinition = {
                     service: serviceDefinition
                 };
             }
 
-            if (serviceDefinition !== null && typeof serviceDefinition.service === 'function') {
+            if (serviceDefinition !== null && serviceDefinition.service) {
+                if (typeof serviceDefinition.service === 'string') {
+                    serviceDefinition.service = this._loadService(serviceDefinition.service);
+                }
+
                 // instantiate the fetched service class.
                 let service = new (serviceDefinition.service)(serviceManager);
                 serviceManager.set(serviceKey, service);
@@ -191,6 +195,17 @@ class Application extends Service {
         }
 
         return this;
+    }
+
+    /**
+     * Load and return a service by its path.
+     *
+     * @param servicePath
+     * @returns {*}
+     * @private
+     */
+    _loadService(servicePath) {
+        return require(servicePath);
     }
 }
 

@@ -309,4 +309,27 @@ describe('kermit::application', function() {
           'Expect service `test2` to be configured with no config through the service definition configKey property that equals `null`.'
         );
     });
+
+    it('should load services if defined as string.', function() {
+        var app = new Application;
+
+        app.configure({
+            configs: [{
+                app: {
+                    services: {
+                        test: __dirname + '/lib/Service',
+                        test2: __dirname + '/../Service'
+                    }
+                }
+            }]
+        }).bootstrap().launch();
+
+        assert(
+            app.getServiceManager().has('test')
+        );
+
+        assert(
+            app.getServiceManager().has('test2')
+        );
+    });
 });
