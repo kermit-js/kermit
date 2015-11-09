@@ -51,7 +51,7 @@ fs.unlink(packagePath + '/package.js', function(err) {
         throw new Error(err);
     }
 
-    fs.symlink(packagePath + '/' + packageFile, packagePath + '/package.js', function(err) {
+    fs.symlink('./' + packageFile, './package.js', function(err) {
         if (err) {
             throw new Error(err);
         }

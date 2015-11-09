@@ -1,3 +1,7 @@
+2015/11/09 - 2.1.1
+    - Fix typo in packages 'module.exports'.
+    - Fix linkage of es5/6 packages.
+
 2015/11/08 - 2.1.0
     - Add support for auto loading services when they are defined as string. (#18)
 
