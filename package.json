@@ -1,6 +1,6 @@
 {
   "name": "kermit",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Infrastructure for service oriented architecture.",
   "author": {
     "name": "Alrik Zachert",

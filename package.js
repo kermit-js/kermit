@@ -7,7 +7,7 @@
 
 "use strict";
 
-module.export = {
+module.exports = {
     Application: require('./Application'),
     Config: require('./Config'),
     ConfigService: require('./ConfigService'),
